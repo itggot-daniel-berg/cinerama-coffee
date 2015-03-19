@@ -5,7 +5,7 @@
   $(function() {
     console.log('Wat');
     console.log('requesting movies');
-    $('#movies').on('click', '.movie-info', function() {
+    $('#movies').on('click', 'a.movie-info', function() {
       getJson($(this).attr('href'), renderMovie);
       return event.preventDefault();
     });
@@ -24,25 +24,20 @@
   };
 
   renderMovie = function(movie) {
-    var banan;
-    banan = $('#movies').find("[data-id='" + movie.id + "']");
-    banan.parent().append("<span>Runtime: " + movie.runtime + "</span>");
+    var link, runtime;
+    link = $('#movies').find("[data-id='" + movie.id + "']");
+    runtime = link.parent().find('.runtime');
+    runtime.text(movie.runtime);
+    runtime.toggleClass('hidden');
+    append("<span>Runtime: " + movie.runtime + "</span>");
     return console.log("Whoooooh " + movie.runtime + "!");
   };
 
   renderMovies = function(movies) {
-    var movie, movieList, _i, _len;
-    movieList = "<ul>";
-    for (_i = 0, _len = movies.length; _i < _len; _i++) {
-      movie = movies[_i];
-      movieList += "<li>";
-      movieList += "<div class='movie'>";
-      movieList += "<a data-id='" + movie.id + "' class='movie-info' href='/movie.json/" + movie.id + "'>" + movie.name + "</a>";
-      movieList += "</div>";
-      movieList += "</li>";
-    }
-    movieList += "</ul>";
-    return $('#movies').append(movieList);
+    var source, template;
+    source = $('#movies-template').html();
+    template = Handlebars.compile(source);
+    return $('#movies').append(template(movies));
   };
 
   renderCinemas = function(cinemas) {

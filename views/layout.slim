@@ -4,5 +4,19 @@ html
     title Cinerama
     script type='text/javascript' src='/js/jquery.js'
     script type='text/javascript' src='/js/cinerama.js'
+    script type='text/javascript' src='/js/handlebars.js'
+    link rel='stylesheet' type='text/css' href='/css/cinerama.css'
+    script id='movies-template' type='text/x-handlebars-template'
+      |
+        <ul>
+        {{#each this}}
+          <li>
+            <div class='movie-info'>
+              <a data-id='{{id}}' class='movie-info' href='/movie.json/{{id}}'>{{name}}</a>
+              <span class='hidden runtime'></span>
+            </div>
+          </li>
+        {{/each}}
+        </ul>
   body
     == yield
