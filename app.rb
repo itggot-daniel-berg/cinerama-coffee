@@ -13,6 +13,11 @@ class App < Sinatra::Base
     Movie.all.to_json
   end
 
+  get '/movie.json/:id' do |id|
+    Movie.get(id).to_json
+  end
+
+
   get '/' do
     @movies = Movie.all
     @cinemas = Cinema.all
