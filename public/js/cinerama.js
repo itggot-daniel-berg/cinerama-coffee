@@ -3,8 +3,6 @@
   var getJson, renderCinemas, renderMovie, renderMovies;
 
   $(function() {
-    console.log('Wat');
-    console.log('requesting movies');
     $('#movies').on('click', 'a.movie-info', function() {
       getJson($(this).attr('href'), renderMovie);
       return event.preventDefault();
@@ -27,10 +25,8 @@
     var link, runtime;
     link = $('#movies').find("[data-id='" + movie.id + "']");
     runtime = link.parent().find('.runtime');
-    runtime.text(movie.runtime);
-    runtime.toggleClass('hidden');
-    append("<span>Runtime: " + movie.runtime + "</span>");
-    return console.log("Whoooooh " + movie.runtime + "!");
+    runtime.text("Runtime: " + movie.runtime);
+    return runtime.toggleClass('hidden');
   };
 
   renderMovies = function(movies) {

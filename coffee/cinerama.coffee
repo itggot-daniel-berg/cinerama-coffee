@@ -1,6 +1,4 @@
 $ ->
-  console.log('Wat')
-  console.log('requesting movies')
   #register an event listener that fires
   #every time someone clicks on the target
   $('#movies').on 'click', 'a.movie-info', ->
@@ -21,12 +19,8 @@ getJson = (url, callbackFunction) ->
 renderMovie = (movie) ->
   link = $('#movies').find("[data-id='#{movie.id}']")
   runtime = link.parent().find('.runtime')
-  runtime.text(movie.runtime)
+  runtime.text("Runtime: #{movie.runtime}")
   runtime.toggleClass('hidden')
-
-
-  append("<span>Runtime: #{movie.runtime}</span>")
-  console.log("Whoooooh #{movie.runtime}!")
 
 renderMovies = (movies) ->
   source = $('#movies-template').html()
