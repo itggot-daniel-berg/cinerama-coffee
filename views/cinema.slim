@@ -1,0 +1,5 @@
+h2= "Movies showing at #{@cinema.name}"
+ul
+-for movie in @movies
+  li
+    a href="/cinema/#{@cinema.id}/movie/#{movie.id}"= movie.name

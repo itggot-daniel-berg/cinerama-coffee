@@ -1,0 +1,8 @@
+h2= "Showings for #{@movie.name} at #{@cinema.name}"
+ul
+-for showing in @showings
+  li
+    form action="/book/showing/#{showing.id}" method='post'
+      span= showing.start_time.strftime('%Y-%m-%d %H:%M')
+      span= "(#{showing.room.number_of_seats - showing.bookings.count} seats left)"
+      button type="submit" Book!

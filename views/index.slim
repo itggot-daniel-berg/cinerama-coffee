@@ -1,0 +1,11 @@
+h2 Movies
+ul
+-for movie in @movies
+  li
+    a href="/movie/#{movie.id}"= movie.name
+
+h2 Cinemas
+ul
+-for cinema in @cinemas
+  li
+    a href="/cinema/#{cinema.id}"= cinema.name
