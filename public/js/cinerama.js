@@ -24,7 +24,10 @@
   };
 
   renderMovie = function(movie) {
-    return console.log("Whoooooh " + movie.id + "!");
+    var banan;
+    banan = $('#movies').find("[data-id='" + movie.id + "']");
+    banan.parent().append("<span>Runtime: " + movie.runtime + "</span>");
+    return console.log("Whoooooh " + movie.runtime + "!");
   };
 
   renderMovies = function(movies) {
@@ -33,7 +36,9 @@
     for (_i = 0, _len = movies.length; _i < _len; _i++) {
       movie = movies[_i];
       movieList += "<li>";
-      movieList += "<a class='movie-info' href='/movie.json/" + movie.id + "'>" + movie.name + "</a>";
+      movieList += "<div class='movie'>";
+      movieList += "<a data-id='" + movie.id + "' class='movie-info' href='/movie.json/" + movie.id + "'>" + movie.name + "</a>";
+      movieList += "</div>";
       movieList += "</li>";
     }
     movieList += "</ul>";

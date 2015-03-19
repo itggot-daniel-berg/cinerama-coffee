@@ -19,13 +19,17 @@ getJson = (url, callbackFunction) ->
     success: callbackFunction
 
 renderMovie = (movie) ->
-  console.log("Whoooooh #{movie.id}!")
+  banan = $('#movies').find("[data-id='#{movie.id}']")
+  banan.parent().append("<span>Runtime: #{movie.runtime}</span>")
+  console.log("Whoooooh #{movie.runtime}!")
 
 renderMovies = (movies) ->
   movieList = "<ul>"
   for movie in movies
     movieList += "<li>"
-    movieList += "<a class='movie-info' href='/movie.json/#{movie.id}'>#{movie.name}</a>"
+    movieList += "<div class='movie'>"
+    movieList += "<a data-id='#{movie.id}' class='movie-info' href='/movie.json/#{movie.id}'>#{movie.name}</a>"
+    movieList += "</div>"
     movieList += "</li>"
   movieList += ("</ul>")
   $('#movies').append(movieList)
